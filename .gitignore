@@ -38,9 +38,15 @@ env/
 .ipynb_checkpoints/
 *.ipynb_checkpoints
 
+# Folders to exclude
+Program/
+Laporan/
+Referensi/
+Project - Copy/
+data/raw/penjualan_umkm.csv
+
 # Project specific
 cache/
-Program/cache/
 *.sqlite3
 .env
 .env.local
@@ -48,6 +54,16 @@ Program/cache/
 # Data (optional - uncomment if needed)
 # data/raw/*.csv
 # *.csv
+
+# Large files
+*.zip
+*.pdf
+*.7z
+*.rar
+
+# Backup
+~$*.docx
+~$*.xlsx
 
 # Logs
 *.log
