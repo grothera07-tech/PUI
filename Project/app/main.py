@@ -149,9 +149,10 @@ elif page == "Prediksi":
                 kuartal            = (bulan - 1) // 3 + 1
 
                 # Susun input fitur sesuai urutan saat training
+                # Urutan: nama_produk, harga, hari, bulan, tahun, hari_dalam_minggu, is_weekend, minggu_dalam_bulan, kuartal
                 input_features = np.array([[
-                    harga,
                     produk_encoded,
+                    harga,
                     hari,
                     bulan,
                     tahun,
