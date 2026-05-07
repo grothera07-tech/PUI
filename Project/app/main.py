@@ -15,7 +15,7 @@ st.set_page_config(
 @st.cache_resource
 def load_model():
     """Load trained model if exists"""
-    model_path = Path("model") / "model.joblib"
+    model_path = Path(__file__).parent.parent / "model" / "rf_model.pkl"
     try:
         if model_path.exists():
             model = joblib.load(model_path)
