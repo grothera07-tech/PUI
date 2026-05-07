@@ -215,8 +215,8 @@ elif page == "Prediksi":
                 st.markdown("#### 📋 Detail Input yang Digunakan:")
                 detail_df = pd.DataFrame({
                     "Fitur": [
-                        "Nama Produk", "Harga (Rp)", "Tanggal",
-                        "Hari", "Bulan", "Tahun",
+                        "Nama Produk", "Harga (Rp)", "Year-Month-Day",
+                        "Tanggal", "Bulan", "Tahun",
                         "Hari dalam Minggu", "Weekend?",
                         "Minggu dalam Bulan", "Kuartal"
                     ],
