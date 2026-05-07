@@ -26,7 +26,7 @@ st.set_page_config(
 )
 
 # =============================================
-# LOAD MODEL
+# LOAD MODEL & SCALER
 # =============================================
 @st.cache_resource
 def load_model():
@@ -41,6 +41,20 @@ def load_model():
             return None
     except Exception as e:
         st.error(f"❌ Error loading model: {str(e)}")
+        return None
+
+@st.cache_resource
+def load_scaler():
+    """Load scaler untuk preprocessing input."""
+    scaler_path = Path(__file__).parent.parent / "model" / "scaler.pkl"
+    try:
+        if scaler_path.exists():
+            scaler = joblib.load(scaler_path)
+            return scaler
+        else:
+            return None
+    except Exception as e:
+        st.warning(f"⚠️ Scaler tidak ditemukan: {str(e)}")
         return None
 
 # =============================================
@@ -58,8 +72,9 @@ page = st.sidebar.radio(
     ["Upload Data", "Prediksi", "Analisis Model"]
 )
 
-# Load model sekali
+# Load model dan scaler sekali
 model = load_model()
+scaler = load_scaler()
 
 # =============================================
 # HALAMAN 1: UPLOAD DATA
@@ -162,8 +177,16 @@ elif page == "Prediksi":
                     kuartal
                 ]])
 
+                # Scale input fitur sebelum prediksi (model dilatih dengan scaled data)
+                if scaler is not None:
+                    # Hanya scale kolom numerik (skip bulan, tahun, kuartal yang tidak berubah)
+                    feature_names_full = ['nama_produk', 'harga', 'hari', 'bulan', 'tahun', 'hari_dalam_minggu', 'is_weekend', 'minggu_dalam_bulan', 'kuartal']
+                    input_features_scaled = scaler.transform(input_features)
+                else:
+                    input_features_scaled = input_features
+
                 # Lakukan prediksi
-                prediksi = model.predict(input_features)[0]
+                prediksi = model.predict(input_features_scaled)[0]
 
                 # Tampilkan hasil
                 st.success("✅ Prediksi berhasil!")
@@ -239,7 +262,7 @@ elif page == "Analisis Model":
         st.subheader("📊 Feature Importance")
         try:
             feature_names = [
-                "harga", "nama_produk", "hari", "bulan", "tahun",
+                "nama_produk", "harga", "hari", "bulan", "tahun",
                 "hari_dalam_minggu", "is_weekend", "minggu_dalam_bulan", "kuartal"
             ]
 
@@ -292,10 +315,14 @@ elif page == "Analisis Model":
                 df_eval    = df_eval.drop(columns=['tanggal'], errors='ignore')
 
                 feature_cols = [
-                    "harga", "nama_produk", "hari", "bulan", "tahun",
+                    "nama_produk", "harga", "hari", "bulan", "tahun",
                     "hari_dalam_minggu", "is_weekend", "minggu_dalam_bulan", "kuartal"
                 ]
                 available_cols = [c for c in feature_cols if c in df_eval.columns]
+
+                # Scale fitur untuk prediksi
+                if scaler is not None:
+                    df_eval[available_cols] = scaler.transform(df_eval[available_cols])
 
                 X_eval = df_eval[available_cols]
                 y_eval = df_eval['jumlah']
