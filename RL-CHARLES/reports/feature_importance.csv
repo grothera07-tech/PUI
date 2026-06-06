@@ -1,0 +1,41 @@
+feature,importance
+nama_produk_Beras 5 kg,0.1885626985822142
+stok_awal,0.17338522834566433
+jumlah_pengunjung,0.13645426568714775
+akhir_pekan,0.121701185037134
+harga_satuan,0.09302876346774568
+kategori_produk_fashion,0.06508778955185134
+bulan,0.03404374680313485
+rating_produk,0.02640991076094347
+diskon_persen,0.022004395897777276
+promo_aktif,0.01639819415630815
+nama_produk_Paket nasi lauk,0.013627570866997066
+kanal_penjualan_campuran,0.01269130851941355
+nama_produk_Minuman kopi susu,0.010874760756284074
+cuaca_cerah,0.01044658013234587
+kanal_penjualan_online,0.00830747775197506
+cuaca_hujan_deras,0.007175916881271395
+cuaca_berawan,0.005865526662453589
+kanal_penjualan_offline,0.005496650765253875
+cuaca_hujan_ringan,0.005093653753982448
+musim_ramadan_lebaran,0.004236599539804561
+hari_dalam_minggu_Thursday,0.0034461768868988456
+nama_produk_Buket mini,0.0033401464270133427
+hari_dalam_minggu_Tuesday,0.003119690361746732
+hari_dalam_minggu_Monday,0.0030864278181200653
+hari_dalam_minggu_Saturday,0.003001894956310417
+nama_produk_Hijab polos,0.002917701225126358
+hari_dalam_minggu_Wednesday,0.002770354322175817
+hari_dalam_minggu_Sunday,0.0026232664068277568
+hari_dalam_minggu_Friday,0.0024980733693012367
+nama_produk_Minyak goreng 1 liter,0.0023355522748207914
+nama_produk_Paket hampers,0.0018520467934862877
+nama_produk_Snack kemasan lokal,0.0017839039574941318
+nama_produk_Sabun cuci literan,0.0014896782714809236
+nama_produk_Kaos basic,0.001356271427564255
+kategori_produk_kebutuhan_rumah,0.0010905722963750432
+nama_produk_Sandal harian,0.0006468200971962001
+kategori_produk_aksesoris,0.0005676647909662419
+nama_produk_Aksesori ponsel,0.0005092849196365585
+kategori_produk_makanan_minuman,0.00042538374496784576
+kategori_produk_kerajinan,0.0002468657327887112
